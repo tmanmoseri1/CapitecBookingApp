@@ -1,1 +1,1 @@
-# CapitecBookingApp
+# Capitec Booking App
