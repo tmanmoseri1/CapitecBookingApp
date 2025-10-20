@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3.9'
 services:
   postgres:
     image: postgres:14
@@ -13,7 +13,7 @@ services:
   pgadmin:
     image: dpage/pgadmin4
     environment:
-      PGADMIN_DEFAULT_EMAIL: admin@local
+      PGADMIN_DEFAULT_EMAIL: tmanmoseri1@gmail.com
       PGADMIN_DEFAULT_PASSWORD: admin
     ports:
       - "8081:8081"
