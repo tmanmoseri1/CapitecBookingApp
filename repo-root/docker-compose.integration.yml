@@ -1,0 +1,36 @@
+version: "3.9"
+services:
+  db:
+    image: postgres:14
+    container_name: appointment-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: appointment
+    ports:
+      - "5432:5432"
+    volumes:
+      - appointment-data:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend
+    container_name: appointment-backend
+    ports:
+      - "8081:8081"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/appointment
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+    depends_on:
+      - db
+
+  frontend:
+    build: ./frontend
+    container_name: appointment-frontend
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+
+volumes:
+  appointment-data:

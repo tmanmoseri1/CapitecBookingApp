@@ -1,0 +1,39 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/appointment
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  security:   # Configure Spring Security for basic authentication recommended for production
+    username: admin
+    password: admin123
+#  security:   # If you're only working locally and want to disable security for developmen
+#    username: admin
+#    password: admin123
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+server:
+  port: 8081
+
+flyway:
+  enabled: false
+  baseline-on-migrate: true
+  ignore-future-migrations: true
+  locations: classpath:db/migration
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*" # Enable security for actuator endpoints
+  endpoint:
+    health:
+      show-details: always
+
+
+
+
