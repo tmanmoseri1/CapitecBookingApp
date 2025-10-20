@@ -1,0 +1,47 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+  flyway:
+    enabled: false  # disable Flyway for tests
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+  server:
+    port: 8081
+
+
+##################################
+#   Running PostgreSQL on h2
+# use an in-memory H2 DB for tests
+#  skip Flyway migrations
+#  autogenerate tables from entities
+##################################
+#spring:
+#  datasource:
+#    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1
+#    driver-class-name: org.h2.Driver
+#    username: sa
+#    password:
+# jpa:
+#    hibernate:
+#     ddl-auto: update
+#    properties:
+#     hibernate:
+#        dialect: org.hibernate.dialect.H2Dialect
+#  flyway:
+#    enabled: false  # disable Flyway for tests
